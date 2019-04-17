@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import Post,Profile,Comments
-from .forms import CommentForm
+from .forms import CommentForm,LikeForm
 
 # Create your views here.
 def index(request):
@@ -31,3 +31,17 @@ def com(request,blog_id):
 
     return render(request,'comments.html',{"posts":posts,"comment":comment,"likes":likes}) 
 
+def like(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = LikeForm(request.POST, request.FILES)
+        if form.is_valid():
+            likes = form.save(commit=False)
+            likes.user = current_user
+            likes.save()
+
+            return redirect('home')
+
+    else:
+        form = LikeForm()
+    return render(request, 'like.html', {"form": form})

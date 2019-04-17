@@ -13,24 +13,29 @@
 <body>
   <div class="container">
     <div class="header">
-      <h2>Queens'Blog</h2>
+      <h2>Queens Blog</h2>
     </div>
 
 
     <div class="leftcolumn">
       <div class="card">
-        {% for post in posts %}
+        {% for post in posts|dictsortreversed:"id"|slice:"5" %}
         <h1>{{post.title}}</h1>
-        <img style="height:250px; width:400px; border-radius:5px; margin-left:15px; margin-right: 15px; margin-bottom: 30px"
-          src="{{post.blog}}" class="img-rounded" alt="Image" data-toggle="modal"><br>
         <p>{{post.date}}</p>
+        <img style="height:300px; width:600px; border-radius:5px; margin-left:15px; margin-right: 15px; margin-bottom: 30px"
+          src="{{post.blog.url}}" class="img-rounded" alt="Image" data-toggle="modal"><br>
+
         <p>{{post.description}}</p>
         <p>{{post.author}}</p>
         <a href="{% url 'comments' %}">
           <p>comments</p>
         </a>
+        <a href="{% url 'like' %}"></a>
         <div class="fa fa-thumbs-up" style="font-size:24px"></div>
-        <div class="fa fa-share-alt" style="font-size:24px"></div>
+        </a>
+        <a href="https://www.facebook.com/Kabengera Queen">
+          <div class="fa fa-share-alt" style="font-size:24px"></div>
+        </a>
 
         {% empty %}
         <h3 class="text-center">There are No Images</h3>
@@ -41,31 +46,41 @@
     <div class="rightcolumn">
       <div class="card">
         <h2>About Me</h2>
-        <p>{{post.name}}</p>
-        <div class="fakeimg">My profile
-          <a href="profile/{{prof_image.id}}"><img src="profile.prof_image"></a>
+        <p>{{profile.name}}</p>
+        <div class="img" style="height:200px; width:100px; border-radius:5px; margin-left:15px; margin-right: 15px; margin-bottom: 30px">
+          <a href="profile/{{prof_image.id}}"><img src="{{profile.prof_image.url}}"></a>
         </div>
-        <p>{{post.bio}}</p>
+        <p>{{profile.bio}}</p>
       </div>
 
       <div class="card">
-        <h3>Popular Post</h3>
-        <div class="fakeimg">Image</div><br>
-        <div class="fakeimg">Image</div><br>
-        <div class="fakeimg">Image</div>
+
+        <div class="img">
+          <h3>Popular Post</h3>
+          {% for post in posts|dictsortreversed:"id"|slice:"5" %}
+          <h1>{{post.title}}</h1>
+          <img style="height:250px; width:400px; border-radius:5px; margin-left:15px; margin-right: 15px; margin-bottom: 30px"
+            src="{{post.blog.url}}" class="img-rounded" alt="Image" data-toggle="modal"><br>
+          <p>{{post.date}}</p>
+          {% empty %}
+          <h3 class="text-center">There are No Images</h3>
+
+          {% endfor %}
+        </div><br>
       </div>
       <div class="card">
         <h3>Follow Me</h3>
-        <p>Some text..</p>
+        <a href="https://www.facebook.com/Kabengera Queen" class="fa fa-facebook"></a>
+        <a href="https://www.linkedin.com/uwitonze queen" class="fa fa-linkedin"></a>
+        <a href="https://www.instagram.com/kabengeraqueen" class="fa fa-instagram"></a>
+        <a href="https://github.com/Queen-Uwitonze" class="fa fa-github"></a>
+
       </div>
     </div>
   </div>
 
   <div class="footer">
-    <a href="#" class="fa fa-facebook"></a>
-    <a href="#" class="fa fa-instagram"></a>
-    <a href="#" class="fa fa-github"></a>
-    <a href="#" class="fa fa-google"></a>
+    <p>Copyright &copy; 2018 by Queen.All right reserved.</p>
   </div>
 
   </div>

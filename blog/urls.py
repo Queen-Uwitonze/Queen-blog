@@ -7,6 +7,8 @@ urlpatterns = [
     url(r'^$',views.index,name="home"),
     url(r'^comments/', views.comment_to_post, name='comments'),
     url(r'^com/(\d+)', views.com, name='com'),
+   url(r'^likes/', views.like, name='like'), 
+     
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

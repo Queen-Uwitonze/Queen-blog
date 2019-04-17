@@ -63,9 +63,9 @@ class Profile(models.Model):
         profile = cls.objects.get()
         return profile
     
-    # def update_bio(self,bio):
-    #     self.bio = bio
-    #     self.save()
+    def update_profile(self,bio):
+        self.profile = profile
+        self.save()
         
     # @classmethod
     # def search_by_name(cls,search_term):
@@ -77,10 +77,10 @@ class Comments(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    def save_comments(self):
+    def save_comment(self):
         self.save()
     
-    def update_comments(self):
+    def update_comment(self):
        self.remove()
         
     def delete_comment(self):
@@ -89,7 +89,7 @@ class Comments(models.Model):
 class Like(models.Model):
     likes= models.IntegerField(default=0)
     posts = models.ForeignKey(Post, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,related_name='messages_received')
 
     def __str__(self):
         return self.likes
