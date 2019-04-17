@@ -19,23 +19,20 @@
     <div class="row">
       <div class="leftcolumn">
         <div class="card">
-          <h2>TITLE HEADING</h2>
-          <h5>Title description, Dec 7, 2017</h5>
-          <div class="fakeimg" style="height:200px;">Image</div>
-          <p>Some text..</p>
-          <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-            ullamco.</p>
+          {% for post in posts %}
+          <div class="col-md-3 container">
+            <p>{{post.title}}</p>
+            <a href="post/{{post.id}}">
+              <img style="height:250px; width:400px; border-radius:5px; margin-left:15px; margin-right: 15px; margin-bottom: 30px"
+                src="{{post.post.url}}" class="img-rounded" alt="Image" data-toggle="modal"><br>
+            </a>
+            <p>{{post.descrpition}}</p>
+          </div>
+          {% empty %}
+          <h3 class="text-center">There are No Images</h3>
+          {% endfor %}
         </div>
-        <div class="card">
-          <h2>TITLE HEADING</h2>
-          <h5>Title description, Sep 2, 2017</h5>
-          <div class="fakeimg" style="height:200px;">Image</div>
-          <p>Some text..</p>
-          <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-            ullamco.</p>
-        </div>
+
       </div>
       <div class="rightcolumn">
         <div class="card">
@@ -57,7 +54,10 @@
     </div>
 
     <div class="footer">
-      <h2>Footer</h2>
+      <a href="#" class="fa fa-facebook"></a>
+      <a href="#" class="fa fa-instagram"></a>
+      <a href="#" class="fa fa-github"></a>
+      <a href="#" class="fa fa-google"></a>
     </div>
 
   </div>

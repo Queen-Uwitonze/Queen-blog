@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+{{block.super}}
+<div class="container-fluid">
+  <h1 style="text-align:center; color:darkolivegreen; font-family: 'Margarine', cursive; height: 50px; border: 1px solid white; margin-left: 600px; margin-right: 600px;">Welcome
+    to my photo gallery</h1>
+  <hr>
+  <br>
+  <div class="row">
+    {% for post in posts %}
+    <div class="col-md-3 container">
+      <p>{{post.title}}</p>
+      <a href="post/{{post.id}}">
+        <img style="height:250px; width:400px; border-radius:5px; margin-left:15px; margin-right: 15px; margin-bottom: 30px"
+          src="{{post.post.url}}" class="img-rounded" alt="Image" data-toggle="modal"><br>
+      </a>
+      <p>{{post.descrpition}}</p>
+    </div>
+    {% empty %}
+    <h3 class="text-center">There are No Images</h3>
+    {% endfor %}
+  </div>
+</div>
+{% endblock%}
