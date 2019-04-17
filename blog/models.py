@@ -17,7 +17,7 @@ class Post(models.Model):
         return posts     
 
     @classmethod
-    def get_all_posts(cls):
+    def get_all_posts(cls,id):
             posts = Post.objects.all()
             return posts 
         

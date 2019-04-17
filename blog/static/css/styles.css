@@ -8,6 +8,7 @@ body {
   padding: 20px;
   background: #f1f1f1;
   font-family: 'Open Sans', sans-serif;
+  font-size: 100;
 }
 
 /* Header/Blog Title */
@@ -101,4 +102,8 @@ body {
 .fa-google {
   background: orangered;
   color: white;
+}
+h1{
+  font-size: 200;
+  color: darkolivegreen
 }
