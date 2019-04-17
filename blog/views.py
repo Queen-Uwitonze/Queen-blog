@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,redirect
 from .models import Post,Profile,Comments
 from .forms import CommentForm
 
@@ -7,21 +7,27 @@ def index(request):
   message = "welcome"
   posts = Post.objects.all()
   profile = Profile.objects.get()
-  return render(request, 'index.html',{'posts': posts,'profile':profile})
+  comments = Comments.objects.all()
+  return render(request, 'index.html',{'posts': posts,'profile':profile,'comments':comments})
     
 def comment_to_post(request):
    posts = Post.objects.all()
    if request.method == 'POST':
        form = CommentForm(request.POST)
        if form.is_valid():
-          comments = form.save(commit=False)
-          comments.user = request.user
-          comments = Comments.objects.all()
-          comments.save()
-          return redirect('post_detail')
+          comment = form.save(commit=False)
+          comment.user = request.user
+          comment = Comments.objects.filter(comment =id).all() 
+        #   comment.save()
+          return redirect('home')
    else:
        form = CommentForm()
-   return render(request, 'comments.html', {'form':form,'comments':comments})
+   return render(request, 'comments.html', {'form':form})
 
-    
+def com(request,blog_id):
+    posts = Post.objects.get(id = blog_id)
+    comment = Comments.objects.filter(blog = blog.id).all() 
+    likes = Like.objects.filter(blog = blog.id).all() 
+
+    return render(request,'comments.html',{"posts":posts,"comment":comment,"likes":likes}) 
 

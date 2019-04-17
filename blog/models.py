@@ -77,9 +77,12 @@ class Comments(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    def save_comment(self):
+    def save_comments(self):
         self.save()
-
+    
+    def update_comments(self):
+       self.remove()
+        
     def delete_comment(self):
         self.delete()
 
