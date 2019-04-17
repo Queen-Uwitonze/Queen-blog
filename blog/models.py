@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 class Post(models.Model):
     author= models.CharField(max_length =60)
@@ -8,6 +8,7 @@ class Post(models.Model):
     description = models.CharField(max_length =500)
     date =models.DateTimeField(auto_now_add=True)
     
+
     def __str__(self):
       return self.title
 
@@ -41,3 +42,51 @@ class Post(models.Model):
     #   pass
     # class Meta:
     #     ordering = ['images_name']
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE,primary_key=True)
+    name = models.CharField(max_length=30)
+    prof_image = models.ImageField(upload_to = 'images/')
+    bio = models.CharField(max_length =200)
+    
+
+    def __str__(self):
+        return self.name
+
+
+
+    # def delete_profile(self):
+    #     self.delete()
+
+    @classmethod
+    def get_profile(cls):
+        profile = cls.objects.get()
+        return profile
+    
+    # def update_bio(self,bio):
+    #     self.bio = bio
+    #     self.save()
+        
+    # @classmethod
+    # def search_by_name(cls,search_term):
+    #     profile = cls.objects.filter(name__icontains=search_term)
+    #     return profile
+
+class Comments(models.Model):
+    comment = models.CharField(max_length = 300)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def save_comment(self):
+        self.save()
+
+    def delete_comment(self):
+        self.delete()
+
+class Like(models.Model):
+    likes= models.IntegerField(default=0)
+    posts = models.ForeignKey(Post, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.likes

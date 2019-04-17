@@ -1,12 +1,11 @@
 from django.conf.urls import url
 from blog import views
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^$',views.index,name="home"),
-    url(r'^$', views.post_list, name='post_list'),
-    url(r'^(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/'\
-        r'(?P<post>[-\w]+)/$',
-        views.post_detail, 
-        name='post_detail'),
+    url(r'^comments/', views.comment_to_post, name='comments'),
 ]
+if settings.DEBUG:
+    urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
