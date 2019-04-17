@@ -17,8 +17,7 @@ def comment_to_post(request):
        if form.is_valid():
           comment = form.save(commit=False)
           comment.user = request.user
-          comment = Comments.objects.filter(comment =id).all() 
-        #   comment.save()
+          comment.save()
           return redirect('home')
    else:
        form = CommentForm()
