@@ -25,8 +25,8 @@
     <p>Posted {{posts.date|timesince}} by {{posts.author}}</p>
   </div>
 
-  <div class="row">
-    <a href="{% url 'comments' %}">
+  <div class="wow">
+    <a href="{% url 'comments' posts.id %}">
       <p>comments</p>
     </a>
     <a href="{% url 'like' %}"></a>

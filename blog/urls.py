@@ -5,11 +5,11 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^$',views.index,name="home"),
-    url(r'^comments/', views.comment_to_post, name='comments'),
-    url(r'^com/(\d+)', views.com, name='com'),
+    url(r'^comments/(\d+)', views.comment_to_post, name='comments'),
+    # url(r'^com/(\d+)', views.com, name='com'),
     url(r'^likes/', views.like, name='like'), 
     url(r'^profile/', views.view_profile, name='view_profile'), 
-    url(r'^popular/(\d+)', views.popular_news, name='popular_news'), 
+    # url(r'^popular/(\d+)', views.popular_news, name='popular_news'), 
     url(r'^single/(\d+)', views.view_blog, name='view_blog'), 
     
     
