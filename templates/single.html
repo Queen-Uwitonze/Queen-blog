@@ -1,0 +1,41 @@
+{%extends 'base.html'%}
+
+{% block content %}
+
+<div class="container">
+
+  <div class="row">
+    <img src="{{posts.blog.url}}" style="height:400px; width:600px;justify-content:center; border-radius:5px; margin-left:15px; margin-right: 15px; margin-bottom: 30pxclass=
+      img-responsive"
+      alt="">
+  </div>
+
+  <div class="row">
+    <h1 class="text-center">{{posts.title}}</h1>
+  </div>
+
+  <div class="row">
+    <p>{{posts.blog}}</p>
+  </div>
+
+  <div class="row">
+    <p>{{posts.description}}</p>
+  </div>
+  <div class="row">
+    <p>Posted {{posts.date|timesince}} by {{posts.author}}</p>
+  </div>
+
+  <div class="row">
+    <a href="{% url 'comments' %}">
+      <p>comments</p>
+    </a>
+    <a href="{% url 'like' %}"></a>
+    <div class="fa fa-thumbs-up" style="font-size:24px"></div>
+    </a>
+    <a href="https://www.facebook.com/Kabengera Queen">
+      <div class="fa fa-share-alt" style="font-size:24px"></div>
+    </a>
+  </div>
+</div>
+
+{% endblock %}

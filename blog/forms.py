@@ -5,7 +5,7 @@ from .models import Comments,Like
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comments
-        exclude = ['user']
+        exclude = ['user','post']
 
 class LikeForm(forms.ModelForm):
     class Meta:

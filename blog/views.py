@@ -9,7 +9,23 @@ def index(request):
   profile = Profile.objects.get()
   comments = Comments.objects.all()
   return render(request, 'index.html',{'posts': posts,'profile':profile,'comments':comments})
-    
+
+def view_blog(request,post_id):
+    try:
+        posts = Post.objects.get(id = post_id)
+    except DoesNotExist:
+        raise Http404()
+    return render(request,"single.html",{"posts": posts})
+
+def view_profile(request):
+    profile = Profile.objects.get()
+    return render(request, 'profile.html',{'profile':profile})
+
+def popular_news(request,post_id):
+    posts = Post.objects.get(id=post_id)
+    return redirect("single.html")
+    return render(request, 'popular.html',{'posts':posts})
+
 def comment_to_post(request):
    posts = Post.objects.all()
    if request.method == 'POST':

@@ -17,8 +17,7 @@
 </head>
 
 <body>
-  <div class="container">
-
+  <div class="container" styles='background-color:black'>
     <form action="{%url 'comments'%}" method="post" enctype="multipart/form-data">
       {%csrf_token%}
 
@@ -35,10 +34,10 @@
     <br>
 
     <br>
-    {% for hi in comment %}
+    {% for comment in posts.comment %}
 
-    <p style="color: black;"><strong>{{hi.user}} : {{hi.comment}}</strong></p>
-
+    <p style="color: black;"><strong>{{comment.user}} : {{comment.comment}}</strong></p>
+    jklhjgk
     {% endfor %}
     <br>
     <br>
