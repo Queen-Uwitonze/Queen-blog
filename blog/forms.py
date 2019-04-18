@@ -2,6 +2,7 @@ from django import forms
 from django.core.files import File
 from .models import Comments,Like
 
+
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comments
@@ -12,7 +13,5 @@ class LikeForm(forms.ModelForm):
         model = Like
         exclude = ['user']
 
-# class VotesForm(forms.ModelForm):
-#     class Meta:
-#         model = Votes
-#         exclude = ['user']
+class SubscriptionForm(forms.ModelForm):
+    email = forms.EmailField(label='Email')

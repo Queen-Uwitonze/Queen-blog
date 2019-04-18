@@ -14,8 +14,8 @@
   <div class="container">
     <div class="header">
       <h2>Queens Blog</h2>
-    </div>
 
+    </div>
 
     <div class="leftcolumn">
       <div class="card">
@@ -34,6 +34,8 @@
         {% endfor %}
       </div>
     </div>
+
+
     <div class="rightcolumn">
       <div class="card">
         <h2>About Me</h2>
@@ -45,6 +47,7 @@
       </div>
 
       <div class="card">
+
 
         <div class="img">
           <h3>Popular Post</h3>
@@ -59,18 +62,29 @@
           {% endfor %}
         </div><br>
       </div>
+
+
       <div class="card">
         <h3>Follow Me</h3>
-        <a href="https://www.facebook.com/Kabengera Queen" class="fa fa-facebook"></a>
-        <a href="https://www.linkedin.com/uwitonze queen" class="fa fa-linkedin"></a>
-        <a href="https://www.instagram.com/kabengeraqueen" class="fa fa-instagram"></a>
-        <a href="https://github.com/Queen-Uwitonze" class="fa fa-github"></a>
+        <section class="widget widget_blog_subscription">
+          <form action="#" method="post" accept-charset="utf-8" id="subscribe-blog">
+            <p>Subscribe to our newsletter.</p>
+            <p>
+              <input type="text" name="email" style="width: 95%; padding: 1px 2px" placeholder="Enter your email address"
+                value="" id="subscribe-field">
+            </p>
+            <p>
+              <input type="submit" value="Follow me!">
+            </p>
+          </form>
+        </section>
 
       </div>
     </div>
   </div>
 
   <div class="footer">
+
     <p>Copyright &copy; 2018 by Queen.All right reserved.</p>
   </div>
 

@@ -26,8 +26,8 @@ class Post(models.Model):
     def save_posts(self):
         self.save()
 
-    # def delete_images(self):
-    #   self.remove()
+    def delete_Posts(self):
+      self.remove()
     
     # def update_images(self):
     #   self.remove()
@@ -93,3 +93,7 @@ class Like(models.Model):
 
     def __str__(self):
         return self.likes
+
+class SubscriptionForm(models.Model):
+    email = models.EmailField()
+ 
