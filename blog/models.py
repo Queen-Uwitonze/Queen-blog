@@ -29,11 +29,11 @@ class Post(models.Model):
     def delete_Posts(self):
       self.remove()
     
-    # def update_images(self):
-    #   self.remove()
+    def update_images(self):
+      self.remove()
     
-    # def get_image_by_id(id):
-    #   pass
+    def get_post_by_id(id):
+      pass
      
     # def search_results(images):
     #   pass
